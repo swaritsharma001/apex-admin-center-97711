@@ -1,10 +1,6 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UserManagement } from "@/components/admin/UserManagement";
-import { PropertyManagement } from "@/components/admin/PropertyManagement";
-import { ContentManagement } from "@/components/admin/ContentManagement";
-import { TeamManagement } from "@/components/admin/TeamManagement";
-import { StatisticsManagement } from "@/components/admin/StatisticsManagement";
-import { Shield, Users, Home, Settings, UsersRound, BarChart3 } from "lucide-react";
+import { Shield, Users, Home, Settings, UsersRound, BarChart3, Briefcase } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
 
@@ -26,50 +22,121 @@ const Admin = () => {
 
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="users" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-8 overflow-x-auto">
-              <TabsTrigger value="users" className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                Users
-              </TabsTrigger>
-              <TabsTrigger value="properties" className="flex items-center gap-2">
-                <Home className="h-4 w-4" />
-                Properties
-              </TabsTrigger>
-              <TabsTrigger value="team" className="flex items-center gap-2">
-                <UsersRound className="h-4 w-4" />
-                Team
-              </TabsTrigger>
-              <TabsTrigger value="statistics" className="flex items-center gap-2">
-                <BarChart3 className="h-4 w-4" />
-                Statistics
-              </TabsTrigger>
-              <TabsTrigger value="content" className="flex items-center gap-2">
-                <Settings className="h-4 w-4" />
-                Content
-              </TabsTrigger>
-            </TabsList>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link to="/admin/users">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Users className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>User Management</CardTitle>
+                      <CardDescription>Manage registered users</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    View, edit, and manage all user accounts
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <TabsContent value="users">
-              <UserManagement />
-            </TabsContent>
+            <Link to="/admin/properties">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Home className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>Property Management</CardTitle>
+                      <CardDescription>Manage properties</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Add, edit, and manage property listings
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <TabsContent value="properties">
-              <PropertyManagement />
-            </TabsContent>
+            <Link to="/admin/team">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <UsersRound className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>Team Management</CardTitle>
+                      <CardDescription>Manage team members</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Add and manage team members and agents
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <TabsContent value="team">
-              <TeamManagement />
-            </TabsContent>
+            <Link to="/admin/statistics">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <BarChart3 className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>Statistics</CardTitle>
+                      <CardDescription>View platform stats</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Monitor and analyze platform metrics
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <TabsContent value="statistics">
-              <StatisticsManagement />
-            </TabsContent>
+            <Link to="/admin/content">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Settings className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>Content Management</CardTitle>
+                      <CardDescription>Manage website content</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Update content and website settings
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <TabsContent value="content">
-              <ContentManagement />
-            </TabsContent>
-          </Tabs>
+            <Link to="/admin/careers">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <Briefcase className="h-8 w-8 text-primary" />
+                    <div>
+                      <CardTitle>Careers Management</CardTitle>
+                      <CardDescription>Manage job postings</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Create and manage career opportunities
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
