@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserManagement } from "@/components/admin/UserManagement";
 import { PropertyManagement } from "@/components/admin/PropertyManagement";
@@ -6,51 +5,8 @@ import { ContentManagement } from "@/components/admin/ContentManagement";
 import { TeamManagement } from "@/components/admin/TeamManagement";
 import { StatisticsManagement } from "@/components/admin/StatisticsManagement";
 import { Shield, Users, Home, Settings, UsersRound, BarChart3 } from "lucide-react";
-import axios from "axios";
 
 const Admin = () => {
-  const [loading, setLoading] = useState(true);
-
-  async function checkAdmin() {
-    try {
-      const token = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token="))
-        ?.split("=")[1];
-
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      const role = res.data?.role || res.data?.user?.role;
-
-      if (role === "admin") {
-        setLoading(false);
-      } else {
-        setLoading(false);
-        //window.location.href = "/";
-      }
-    } catch (err) {
-      //window.location.href = "/";
-    }
-  }
-
-  useEffect(() => {
-    checkAdmin();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-background">
-        <p className="text-lg font-medium">Checking admin access...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
